@@ -1,0 +1,21 @@
+{% extends "parkingtickets/base.html" %}
+
+{% block title %}Parking Tickets{% endblock %}
+
+{% block extrascript %}
+<script type="text/javascript">
+$(document).ready(function(){
+	
+});
+</script>
+{% endblock %}
+
+{% block body %}
+<h1>Parking tickets!</h1>
+<h2>A random tweet about parking tickets:</h2>
+<p>{{ tweet.text }} (<a href="{{ tweet.url }}">link</a>)</p>
+<p>From user: <a href="http://twitter.com/{{ tweet.user.screen_name }}">{{ tweet.user.screen_name }}</a></p>
+<form method="post" action="/vote/{{ tweet.id }}/up">
+<input type="submit" name="submit" value="Send love" />
+</form>
+{% endblock %}
