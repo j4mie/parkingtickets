@@ -1,3 +1,6 @@
+# FROM http://www.djangosnippets.org/snippets/290/ 
+# FOR DEBUGGING ONLY
+
 from django.db import connection
 from django.conf import settings
 import os
