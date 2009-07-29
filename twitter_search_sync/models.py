@@ -1,7 +1,9 @@
 from django.db import models
 from django.conf import settings
 
-# Create your models here.
+# Somewhat based on code from http://code.google.com/p/django-syncr/
+# Unpleasantly coupled to the voting app at the moment.
+
 class BigIntegerField(models.IntegerField):
     """
     Defines a PostgreSQL compatible IntegerField needed to prevent 'integer 
