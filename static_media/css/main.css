@@ -1,0 +1,60 @@
+body {
+	font-family: "Palatino", "Georgia", "Times", "serif"; 
+	text-align: center;
+}
+
+h1 {
+	text-align: center;
+	margin: 50px;
+}
+
+div.tweet_and_user {
+	width: 500px;
+	margin: 20px auto;
+}
+
+div.voting {
+	width: 96px;
+	margin: 20px auto;
+}
+
+p.tweet {
+	width: 500px;
+	padding: 20px;
+	background: pink;
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	-moz-box-shadow: 5px 5px 10px #888;
+	-webkit-box-shadow: 5px 5px 10px #888;
+}
+
+p.user {
+	text-align: right;
+}
+
+form {
+	float: left;
+}
+
+input.button {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: white;
+	height: 48px;
+	width: 48px;
+	border: none;
+	cursor: pointer;
+}
+
+input.love_button {
+	background-image: url('../images/heart.png');
+}
+
+input.irrelevant_button {
+	background-image: url('../images/down.png');
+}
+
+div.clear {
+	clear: both;
+}

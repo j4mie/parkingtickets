@@ -1,28 +1,36 @@
 {% extends "parkingtickets/base.html" %}
 
-{% block title %}Parking Tickets{% endblock %}
+{% block title %}I Will Pay Your Parking Ticket{% endblock %}
 
 {% block extrascript %}
-<script type="text/javascript">
-$(document).ready(function(){
-	
-});
-</script>
+<script type="text/javascript" src="static_media/js/main.js"></script>
 {% endblock %}
 
 {% block body %}
-<h1>Parking tickets!</h1>
-<h2>A random tweet about parking tickets:</h2>
-<p>{{ tweet.text }} (<a href="{{ tweet.url }}">link</a>)</p>
-<p>From user: <a href="{{ tweet.user_url }}">{{ tweet.user }}</a></p>
-<p>Votes: {{ vote_count }}</p>
+<h1>I Will Pay Your Parking Ticket</h1>
 
-<form method="post" action="/vote/love/{{ tweet.id }}">
-<input type="submit" name="submit" value="Send love" />
+<div class="tweet_and_user">
+<p class="tweet">{{ tweet.text }}</p>
+<p class="user">
+From user: <a href="{{ tweet.user_url }}">{{ tweet.user }}</a> 
+tweet: <a href="{{ tweet.url }}">link</a>
+</p>
+</div>
+
+<div class="voting">
+<form method="post" action="/vote/love/{{ tweet.id }}" id="love">
+<p><input type="submit" name="submit" value="" class="love_button button" /></p>
 </form>
 
-<form method="post" action="/vote/irrelevant/{{ tweet.id }}">
-<input type="submit" name="submit" value="Irrelevant" />
+<form method="post" action="/vote/irrelevant/{{ tweet.id }}" id="irrelevant">
+<p><input type="submit" name="submit" value="" class="irrelevant_button button" /></p>
 </form>
+</div>
+
+<div class="clear">&nbsp;</div>
+
+<p><a href="/" title="Get another tweet">Get another tweet</a></p>
+
+<p class="status">&nbsp; DEBUG votes: {{ tweet.upvotes }}</p>
 
 {% endblock %}

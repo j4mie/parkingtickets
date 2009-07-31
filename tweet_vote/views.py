@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseForbidden
 from twitter_search_sync.models import Tweet
 from tweet_vote.models import TweetVote
 from django.shortcuts import get_object_or_404
@@ -13,7 +13,7 @@ def vote(request, direction, object_id):
 			choice = -1
 		
 		# Rudimentary avoidance of duplicate votes from the same user.	
-		unique_key = request.session.session_key + ':' + request.META['REMOTE_ADDR']
+		unique_key = request.session.session_key
 			
 		defaults = {
 			'tweet': tweet,
@@ -24,8 +24,8 @@ def vote(request, direction, object_id):
 		obj, created = TweetVote.objects.get_or_create(unique_key = unique_key, tweet = tweet, defaults = defaults)			
 		
 		if created:
-			response = 'success'
+			response = HttpResponse('success')
 		else:
-			response = 'already_voted'
+			response = HttpResponseForbidden('already_voted')
 			
-		return HttpResponse(response)
+		return response
