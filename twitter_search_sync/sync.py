@@ -21,11 +21,15 @@ class SearchSyncr:
 		self.created_count = 0
 
 	def _syncTweet(self, entry):
+		
 		twitter_id = entry.id[entry.id.rindex(':')+1:]
+		real_name = entry.author[entry.author.index(' ')+2:-1]
+		
 		defaults = {
 			'pub_time': datetime(*entry.published_parsed[:6]),
 			'twitter_id': twitter_id,
 			'user': smart_unicode(entry.author.split(' ')[0]),
+			'real_name': smart_unicode(real_name),
 			'text': smart_unicode(entry.title)
 		}
 		
