@@ -28,6 +28,7 @@ class Tweet(models.Model):
     real_name	= models.TextField()
     upvotes		= models.IntegerField(default = 0) # Denormalised
     downvotes	= models.IntegerField(default = 0) # Denormalised
+    view_count	= models.IntegerField(default = 0)
     
     def __unicode__(self):
         return u'%s %s' % (self.user, self.pub_time)
