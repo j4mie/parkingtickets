@@ -12,13 +12,7 @@
 
 <div class="tweet_and_user">
 <div class="tweet">
-<<<<<<< HEAD:templates/parkingtickets/homepage.html
 
-=======
-<p class="text">
-{{ tweet.text|urlize|strongify:"parking ticket"|safe }}
-</p>
->>>>>>> 19a008162aa78f4768782cb39ec99db0ad0e6b51:templates/parkingtickets/homepage.html
 <p class="image">
 <a href="{{ tweet.user_url }}" title="{{ tweet.user }}'s profile">
 <img src="http://twivatar.org/{{ tweet.user }}/bigger" alt="Twitter avatar for {{ tweet.user }}" width="73" height="73" />
@@ -26,17 +20,13 @@
 </p>
 
 <p class="text">
-{{ tweet.text|urlize }}
+{{ tweet.text|urlize|strongify:"parking ticket"|safe }}
 </p>
 
-<<<<<<< HEAD:templates/parkingtickets/homepage.html
+
 <div class="user">
-<a href="{{ tweet.url }}">Original tweet</a> sent by <a href="{{ tweet.user_url }}">{{ tweet.user }}</a> {{ tweet.pub_time|timesince|truncatewords:2|cut:","|cut:"." }} ago.
-=======
-<p class="user">
 <a href="{{ tweet.url }}">Original tweet</a> sent by <a href="{{ tweet.user_url }}">{{ tweet.real_name }}</a> {{ tweet.pub_time|timesince|truncatewords:2|cut:","|cut:"." }} ago.
-</p>
->>>>>>> 19a008162aa78f4768782cb39ec99db0ad0e6b51:templates/parkingtickets/homepage.html
+
 </div>
 
 </div>
