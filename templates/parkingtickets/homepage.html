@@ -15,7 +15,9 @@
 {{ tweet.text|urlize }}
 </p>
 <p class="image">
+<a href="{{ tweet.user_url }}" title="{{ tweet.user }}'s profile">
 <img src="http://twivatar.org/{{ tweet.user }}/bigger" alt="Twitter avatar for {{ tweet.user }}" width="73" height="73" />
+</a>
 </p>
 <div class="clear">&nbsp;</div>
 </div>
