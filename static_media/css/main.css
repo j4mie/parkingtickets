@@ -21,7 +21,7 @@ div.voting {
 div.tweet {
 	width: 500px;
 	padding: 20px;
-	background: pink;
+	background: #E2A986;
 	border-radius: 20px;
 	-moz-border-radius: 20px;
 	-webkit-border-radius: 20px;
@@ -39,6 +39,13 @@ div.tweet p.text {
 
 div.tweet p.image {
 	width: 40%;
+}
+
+div.tweet p.image img {
+	border: 1px solid gray;
+	background-image: url(../images/spinner_bubble.gif);
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 p.user {

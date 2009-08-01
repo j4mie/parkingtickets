@@ -12,7 +12,7 @@
 <div class="tweet_and_user">
 <div class="tweet">
 <p class="text">
-{{ tweet.text }}
+{{ tweet.text|urlize }}
 </p>
 <p class="image">
 <img src="http://twivatar.org/{{ tweet.user }}/bigger" alt="Twitter avatar for {{ tweet.user }}" width="73" height="73" />
@@ -22,8 +22,7 @@
 </p>
 
 <p class="user">
-From user: <a href="{{ tweet.user_url }}">{{ tweet.user }}</a> 
-tweet: <a href="{{ tweet.url }}">link</a>
+<a href="{{ tweet.url }}">Original tweet</a> sent by <a href="{{ tweet.user_url }}">{{ tweet.user }}</a> {{ tweet.pub_time|timesince|truncatewords:2|cut:","|cut:"." }} ago.
 </p>
 </div>
 
