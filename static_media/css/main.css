@@ -3,7 +3,21 @@ html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pr
 body {
 	font-family: "Palatino", "Georgia", "Times", "serif"; 
 	text-align: center;
+	color:black;
 }
+
+
+a, a:link,a:visited,a:hover, a:active
+{
+	font-weight:bold;
+	text-decoration:none;
+}
+
+
+a:link {color:black} /* unvisited link */
+a:visited {color:#815738} /* visited link */
+a:hover {color:#815738} /* mouse over link */
+a:active {color:black} /* selected link */
 
 h1 {
     font-family: "Impact", "Charcoal6", "sans-serif"; 
@@ -24,13 +38,10 @@ div.tweet_and_user {
 	margin: 20px auto;
 }
 
-div.voting {
-	width: 96px;
-	margin: 20px auto;
-}
+
 
 div.tweet {
-
+	
 	padding: 20px;
 	background: #E2A986;
 	
@@ -45,26 +56,41 @@ div.tweet p {
 }
 
 div.tweet p.text {
-	width: 60%;
+	width: 360px;
+	text-align: left;  
 }
 
 div.tweet p.image {
-	width: 40%;
+	width: 80px;
+	padding-right : 10px; 
 }
 
 div.tweet p.image img {
-	border: 1px solid gray;
+	border: 2px solid #52290b;
 	background-image: url(../images/spinner_bubble.gif);
 	background-repeat: no-repeat;
 	background-position: center;
 }
 
-p.user {
-	text-align: right;
+div.user {
+	text-align: left;
+	width:440px; 
+	clear:both;
+	padding-top:10px; 
 }
 
-form {
-	float: left;
+div.votebuttons {
+	width: 500px;
+	margin:auto;
+	border:1px red solid;
+	
+}
+form
+{
+	border:1px blue solid;
+	display:inline;
+	float:left;
+	
 }
 
 input.button {
@@ -75,16 +101,30 @@ input.button {
 	width: 48px;
 	border: none;
 	cursor: pointer;
-}
+	
+	}
 
 input.love_button {
 	background-image: url('../images/heart.png');
 }
 
+input.ignore_button {
+	background-image: url('../images/down.png');
+}
 input.irrelevant_button {
 	background-image: url('../images/down.png');
 }
 
 div.clear {
+	border:1px red solid; 
 	clear: both;
 }
+.bottomnav {
+	font-size:70%; 
+	
+}
+
+.bottomnav a:link {color:#5e2d09} /* unvisited link */
+.bottomnav a:visited {color:#815738} /* visited link */
+.bottomnav a:hover {color:#815738} /* mouse over link */
+.bottomnav a:active {color:#5e2d09} /* selected link */

@@ -11,39 +11,47 @@
 
 <div class="tweet_and_user">
 <div class="tweet">
-<p class="text">
-{{ tweet.text|urlize }}
-</p>
+
 <p class="image">
 <a href="{{ tweet.user_url }}" title="{{ tweet.user }}'s profile">
 <img src="http://twivatar.org/{{ tweet.user }}/bigger" alt="Twitter avatar for {{ tweet.user }}" width="73" height="73" />
 </a>
 </p>
-<div class="clear">&nbsp;</div>
-</div>
+
+<p class="text">
+{{ tweet.text|urlize }}
 </p>
 
-<p class="user">
+<div class="user">
 <a href="{{ tweet.url }}">Original tweet</a> sent by <a href="{{ tweet.user_url }}">{{ tweet.user }}</a> {{ tweet.pub_time|timesince|truncatewords:2|cut:","|cut:"." }} ago.
-</p>
 </div>
 
-<div class="voting">
-<form method="post" action="/vote/love/{{ tweet.id }}" id="love">
-<p><input type="submit" name="submit" value="" class="love_button button" /></p>
-</form>
+</div>
+</div>
+
+<div class="votebuttons">
+
+
+
 
 <form method="post" action="/vote/irrelevant/{{ tweet.id }}" id="irrelevant">
-<p><input type="submit" name="submit" value="" class="irrelevant_button button" /></p>
+Flag as irrelevant:<input type="submit" name="submit" value="" class="irrelevant_button button" />
 </form>
+<form method="get" action="/vote/ignoret/{{ tweet.id }}" id="ignore">
+Ignore <input type="submit" name="submit" value="" class="ignore_button button" />
+</form>
+<form method="post" action="/vote/love/{{ tweet.id }}" id="love">
+Send love:<input type="submit" name="submit" value="" class="love_button button" />
+</form>
+
 </div>
 
 <div class="clear">&nbsp;</div>
 
-<p><a href="/" title="Get another tweet">Get another tweet</a></p>
+<p></p>
 
 <p class="status">&nbsp; DEBUG votes: {{ tweet.upvotes }}</p>
 
-<p class="help_link"><a href="{% url help-page %}" title="Help">Help!</a></p>
+<p class="bottomnav"><a href="{% url help-page %}" title="What is this?">What is this?</a> | <a href="#">Follow us on Twitter</a></p>
 
 {% endblock %}
