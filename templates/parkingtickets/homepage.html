@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body %}
-<h1>I<em>Will</em>Pay<em>Your</em>Parking<em>Ticket</em></h1>
+<h1>I Will Pay Your Parking Ticket</h1>
 
 <div class="tweet_and_user">
 <div class="tweet">
@@ -24,7 +24,7 @@
 </p>
 
 <p class="user">
-<a href="{{ tweet.url }}">Original tweet</a> sent by <a href="{{ tweet.user_url }}">{{ tweet.user }}</a> {{ tweet.pub_time|timesince|truncatewords:2|cut:","|cut:"." }} ago.
+<a href="{{ tweet.url }}">Original tweet</a> sent by <a href="{{ tweet.user_url }}">{{ tweet.real_name }}</a> {{ tweet.pub_time|timesince|truncatewords:2|cut:","|cut:"." }} ago.
 </p>
 </div>
 
