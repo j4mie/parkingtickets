@@ -18,7 +18,7 @@ div.voting {
 	margin: 20px auto;
 }
 
-p.tweet {
+div.tweet {
 	width: 500px;
 	padding: 20px;
 	background: pink;
@@ -27,6 +27,18 @@ p.tweet {
 	-webkit-border-radius: 20px;
 	-moz-box-shadow: 5px 5px 10px #888;
 	-webkit-box-shadow: 5px 5px 10px #888;
+}
+
+div.tweet p {
+	float: left;
+}
+
+div.tweet p.text {
+	width: 60%;
+}
+
+div.tweet p.image {
+	width: 40%;
 }
 
 p.user {

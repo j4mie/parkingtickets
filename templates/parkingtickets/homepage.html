@@ -10,7 +10,17 @@
 <h1>I Will Pay Your Parking Ticket</h1>
 
 <div class="tweet_and_user">
-<p class="tweet">{{ tweet.text }}</p>
+<div class="tweet">
+<p class="text">
+{{ tweet.text }}
+</p>
+<p class="image">
+<img src="http://twivatar.org/{{ tweet.user }}/bigger" alt="Twitter avatar for {{ tweet.user }}" width="73" height="73" />
+</p>
+<div class="clear">&nbsp;</div>
+</div>
+</p>
+
 <p class="user">
 From user: <a href="{{ tweet.user_url }}">{{ tweet.user }}</a> 
 tweet: <a href="{{ tweet.url }}">link</a>
@@ -32,5 +42,7 @@ tweet: <a href="{{ tweet.url }}">link</a>
 <p><a href="/" title="Get another tweet">Get another tweet</a></p>
 
 <p class="status">&nbsp; DEBUG votes: {{ tweet.upvotes }}</p>
+
+<p class="help_link"><a href="{% url help-page %}" title="Help">Help!</a></p>
 
 {% endblock %}
