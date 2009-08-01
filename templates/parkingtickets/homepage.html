@@ -1,4 +1,5 @@
 {% extends "parkingtickets/base.html" %}
+{% load parking_tags %}
 
 {% block title %}I Will Pay Your Parking Ticket{% endblock %}
 
@@ -12,7 +13,7 @@
 <div class="tweet_and_user">
 <div class="tweet">
 <p class="text">
-{{ tweet.text|urlize }}
+{{ tweet.text|urlize|strongify:"parking ticket"|safe }}
 </p>
 <p class="image">
 <a href="{{ tweet.user_url }}" title="{{ tweet.user }}'s profile">
