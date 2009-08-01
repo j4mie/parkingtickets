@@ -30,3 +30,4 @@ class TweetVote(models.Model):
 			Tweet.objects.filter(pk = self.tweet.pk).update(upvotes = models.F('upvotes') - 1)
 		if self.vote == -1:
 			Tweet.objects.filter(pk = self.tweet.pk).update(downvotes = models.F('downvotes') -1)
+		super(TweetVote, self).delete()
