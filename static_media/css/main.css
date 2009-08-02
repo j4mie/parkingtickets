@@ -33,6 +33,11 @@ h1 em{
 	font-style:normal;
 	color : #c08156;
 }
+
+strong {
+	font-weight: bold;
+}
+
 div.tweet_and_user {
 	width: 500px;
 	margin: 20px auto;
