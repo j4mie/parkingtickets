@@ -26,8 +26,9 @@ class Tweet(models.Model):
     text        = models.TextField()
     user        = models.TextField()
     real_name	= models.TextField()
-    upvotes		= models.IntegerField(default = 0) # Denormalised
-    downvotes	= models.IntegerField(default = 0) # Denormalised
+    love_count	= models.IntegerField(default = 0) # Denormalised
+    irrelevant_count = models.IntegerField(default = 0) # Denormalised
+    ignore_count = models.IntegerField(default = 0) # Denormalised
     view_count	= models.IntegerField(default = 0)
     
     def __unicode__(self):

@@ -6,7 +6,7 @@ from django.db import models
 from random import randint
 
 def homepage(request):
-	tweets = Tweet.objects.filter(downvotes__lt=5)
+	tweets = Tweet.objects.filter(irrelevant_count__lt=5)
 	tweet_count = tweets.count()
 	random_tweet = tweets[randint(0, tweet_count-1)]
 	

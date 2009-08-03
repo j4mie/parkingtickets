@@ -9,8 +9,10 @@ def vote(request, direction, object_id):
 		
 		if direction == 'love':
 			choice = 1
-		else: # direction must be 'irrelevant'
+		elif direction == 'irrelevant':
 			choice = -1
+		else: # must be 'ignore'
+			choice = 0
 		
 		# Rudimentary avoidance of duplicate votes from the same user.	
 		unique_key = request.session.session_key

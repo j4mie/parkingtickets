@@ -38,10 +38,10 @@
 
 
 <form method="post" action="/vote/irrelevant/{{ tweet.id }}" id="irrelevant">
-Flag as irrelevant:<input type="submit" name="submit" value="" class="irrelevant_button button" />
+Flag as irrelevant: <input type="submit" name="submit" value="" class="irrelevant_button button" />
 </form>
-<form method="get" action="/vote/ignoret/{{ tweet.id }}" id="ignore">
-Ignore <input type="submit" name="submit" value="" class="ignore_button button" />
+<form method="post" action="/vote/ignore/{{ tweet.id }}" id="ignore">
+Ignore: <input type="submit" name="submit" value="" class="ignore_button button" />
 </form>
 <form method="post" action="/vote/love/{{ tweet.id }}" id="love">
 Send love:<input type="submit" name="submit" value="" class="love_button button" />
@@ -53,7 +53,7 @@ Send love:<input type="submit" name="submit" value="" class="love_button button"
 
 <p></p>
 
-<p class="status">&nbsp; DEBUG votes: {{ tweet.upvotes }}</p>
+<p class="status">&nbsp; DEBUG votes: {{ tweet.love_count }}</p>
 
 <p class="bottomnav"><a href="{% url help-page %}" title="What is this?">What is this?</a> | <a href="#">Follow us on Twitter</a></p>
 
