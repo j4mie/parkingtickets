@@ -5,7 +5,6 @@ $(document).ready(function()
 	 */
 	var submit_vote = function(form)
 	{
-		console.log('submitted');
 		// Get jQuery object for the form
 		var form = $(form);
 		var button = form.find('input.button');
@@ -46,11 +45,16 @@ $(document).ready(function()
 				}
 			}
 		});
+		
+		window.setTimeout(function()
+		{
+			console.log('hello');
+			document.location.reload();
+		}, 500);
 	}
 	
 	$('form').submit(function() 
 	{ 
-		console.log('here');
 		submit_vote(this); 
 		return false;
 	});
