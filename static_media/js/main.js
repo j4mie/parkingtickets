@@ -1,24 +1,23 @@
+
+
 $(document).ready(function()
 {
+
+
 	/**
 	 * Function called when a form is submitted
 	 */
+	var heartCount = 7; 	
+	
 	
 	var heartClick = function(img)
 	{
 	
 		var votecount = $(img).attr("id");
 		votecount = votecount.charAt(votecount.length-1);
-		
+		votecount = votecount/(heartCount-1);
 		form = $("#loveform");
-		
-		//alert(votecount+" "+ form.attr('id')); 
-		
-		// Get jQuery object for the form
-		//var form = $(form);
-		//var field = form.find('input.data');
-		//var form_id = form.attr('id');
-		
+				
 		// Get correct site for images and text
 		var message = 'Love sent!';
 
@@ -33,25 +32,19 @@ $(document).ready(function()
 		{
 			'type': 'POST',
 			'url': url,
-			'vote' : votecount, 
+			'data' : {'vote':votecount}, 
 			'success': function(data)
 			{
 				// Voted successfully						
-				//button.css('background-image', 'url(/static_media/images/tick_' + size + '.gif)').blur();
+				
 				$('p.status').html(message + ' <a href="/" title="Get another tweet">Getting another tweet..</a>');
-				/*$('form')
-					.filter(function (index)
-					{
-						return $(this).attr('id') != form.attr('id');
-					})
-					.css('opacity', '0.2');*/
+				
 			},
 			'error': function(xml_http_request)
 			{
 				if (xml_http_request.status == 403)
 				{
 					// Forbidden response, user has already voted
-					//button.css('background-image', 'url(/static_media/images/cross.gif)').blur();
 					$('p.status').html('You have already voted on this tweet. <a href="/" title="Get another tweet">Getting another..</a>');
 				}
 				else
@@ -75,7 +68,6 @@ $(document).ready(function()
 		return false;
 	});
 	
-	var heartCount = 7; 
 	
 	var heartOver = function(img) {
 	
