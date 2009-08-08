@@ -3,30 +3,27 @@ $(document).ready(function()
 	/**
 	 * Function called when a form is submitted
 	 */
-	var submit_vote = function(form)
+	
+	var heartClick = function(img)
 	{
+	
+		var votecount = $(img).attr("id");
+		votecount = votecount.charAt(votecount.length-1);
+		
+		form = $("#loveform");
+		
+		//alert(votecount+" "+ form.attr('id')); 
+		
 		// Get jQuery object for the form
-		var form = $(form);
-		var button = form.find('input.button');
-		var form_id = form.attr('id');
+		//var form = $(form);
+		//var field = form.find('input.data');
+		//var form_id = form.attr('id');
 		
 		// Get correct site for images and text
-		if (form_id == 'love')
-		{
-			var size = 'big';
-			var message = 'Love sent!';
-		}
-		else if (form_id == 'ignore')
-		{
-			var size = 'small';
-			var message = 'Ignored.';
-		}
-		else // must be 'irrelevant'
-		{
-			var size = 'small';
-			var message = 'Flagged, thanks.';
-		}
+		var message = 'Love sent!';
+
 		
+
 		// Get the value of the "action" attribute from the form.
 		// This is the url we need to POST to.
 		var url = form.attr('action');
@@ -36,24 +33,25 @@ $(document).ready(function()
 		{
 			'type': 'POST',
 			'url': url,
+			'vote' : votecount, 
 			'success': function(data)
 			{
 				// Voted successfully						
-				button.css('background-image', 'url(/static_media/images/tick_' + size + '.gif)').blur();
+				//button.css('background-image', 'url(/static_media/images/tick_' + size + '.gif)').blur();
 				$('p.status').html(message + ' <a href="/" title="Get another tweet">Getting another tweet..</a>');
-				$('form')
+				/*$('form')
 					.filter(function (index)
 					{
 						return $(this).attr('id') != form.attr('id');
 					})
-					.css('opacity', '0.2');
+					.css('opacity', '0.2');*/
 			},
 			'error': function(xml_http_request)
 			{
 				if (xml_http_request.status == 403)
 				{
 					// Forbidden response, user has already voted
-					button.css('background-image', 'url(/static_media/images/cross.gif)').blur();
+					//button.css('background-image', 'url(/static_media/images/cross.gif)').blur();
 					$('p.status').html('You have already voted on this tweet. <a href="/" title="Get another tweet">Getting another..</a>');
 				}
 				else
@@ -76,4 +74,53 @@ $(document).ready(function()
 		submit_vote(this); 
 		return false;
 	});
+	
+	var heartCount = 7; 
+	
+	var heartOver = function(img) {
+	
+		var hearton = "/static_media/images/heart.gif";
+		var heartoff = "/static_media/images/heart-off.gif";
+	
+		var on = (img!=""); 
+		
+		for(var i = 0; i<heartCount;i++)
+		{
+			
+			if(on)
+			{
+				$('#heart'+i).attr("src", hearton);
+			}
+			else
+			{
+				$('#heart'+i).attr("src", heartoff);
+			}
+			
+			
+			if($('#heart'+i).attr('id') == $(img).attr('id')) {
+				on = false;
+			}
+		}
+		
+		
+	}
+	
+	for(i = 0; i<heartCount;i++)
+	{
+		$('#heart'+i).hover( function() {
+		
+			heartOver(this);
+		})
+		/*$('#heart'+i).mouseleave( function() {
+		
+			heartOver("");
+		})*/
+		$('#heart'+i).click( function() {
+		
+			heartClick(this);
+		})
+		
+	}
+	
+	
 });

@@ -4,7 +4,11 @@
 {% block title %}I Will Pay Your Parking Ticket{% endblock %}
 
 {% block extrascript %}
+<script src="static_media/js/jquery.MetaData.js" type="text/javascript" language="javascript"></script>
+<script src="static_media/js/jquery.rating.js" type="text/javascript" language="javascript"></script>
 <script type="text/javascript" src="static_media/js/main.js"></script>
+<link href='static_media/js/jquery.rating.css' type="text/css" rel="stylesheet"/>
+
 {% endblock %}
 
 {% block body %}
@@ -34,19 +38,19 @@
 
 <div class="votebuttons">
 
+<img src="/static_media/images/heart-off.gif" id="heart0" />
+<img src="/static_media/images/heart-off.gif" id="heart1" />
+<img src="/static_media/images/heart-off.gif" id="heart2" />
+<img src="/static_media/images/heart-off.gif" id="heart3" />
+<img src="/static_media/images/heart-off.gif" id="heart4" />
+<img src="/static_media/images/heart-off.gif" id="heart5" />
+<img src="/static_media/images/heart-off.gif" id="heart6" />
 
 
-
-<form method="post" action="/vote/irrelevant/{{ tweet.id }}" id="irrelevant">
-<label for="irrelevant_button"> Flag as irrelevant : </label><input type="submit" name="submit" value="" class="irrelevant_button button" id="irrelevant_button" />
+<form method="post" action="/vote/love/{{ tweet.id }}" id="loveform">
+<input type="hidden" id="vote" value="" />
 </form>
-<form method="post" action="/vote/ignore/{{ tweet.id }}" id="ignore">
-<label for="ignore_button"> Ignore :</label> <input type="submit" name="submit" value="" id="ignore_button" class="ignore_button button" />
-</form>
 
-<form method="post" action="/vote/love/{{ tweet.id }}" id="love">
-<label for="love_button">Send love : </label><input type="submit" name="submit" value="" class="love_button button" id="love_button" />
-</form>
 <div class="clear">&nbsp;</div>
 
 </div>
