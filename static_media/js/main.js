@@ -8,6 +8,24 @@ $(document).ready(function()
 		// Get jQuery object for the form
 		var form = $(form);
 		var button = form.find('input.button');
+		var form_id = form.attr('id');
+		
+		// Get correct site for images and text
+		if (form_id == 'love')
+		{
+			var size = 'big';
+			var message = 'Love sent!';
+		}
+		else if (form_id == 'ignore')
+		{
+			var size = 'small';
+			var message = 'Ignored.';
+		}
+		else // must be 'irrelevant'
+		{
+			var size = 'small';
+			var message = 'Flagged, thanks.';
+		}
 		
 		// Get the value of the "action" attribute from the form.
 		// This is the url we need to POST to.
@@ -20,9 +38,9 @@ $(document).ready(function()
 			'url': url,
 			'success': function(data)
 			{
-				// Voted successfully				
-				button.css('background-image', 'url(/static_media/images/tick.png)').blur();
-				$('p.status').html('<a href="/" title="Get another tweet">Get another tweet</a>');
+				// Voted successfully						
+				button.css('background-image', 'url(/static_media/images/tick_' + size + '.gif)').blur();
+				$('p.status').html(message + ' <a href="/" title="Get another tweet">Getting another tweet..</a>');
 				$('form')
 					.filter(function (index)
 					{
@@ -35,22 +53,22 @@ $(document).ready(function()
 				if (xml_http_request.status == 403)
 				{
 					// Forbidden response, user has already voted
-					button.css('background-image', 'url(/static_media/images/cross.png)').blur();
-					$('p.status').html('You have already voted on this tweet. <a href="/" title="Get another tweet">Get another.</a>');
+					button.css('background-image', 'url(/static_media/images/cross.gif)').blur();
+					$('p.status').html('You have already voted on this tweet. <a href="/" title="Get another tweet">Getting another..</a>');
 				}
 				else
 				{
 					// uh-oh, something else has happened
-					$('p.status').text('Sorry, an error has occurred');
+					$('p.status').text('Sorry, something went wrong. Getting another tweet..');
 				}
 			}
 		});
 		
+		// Refresh the page to get another tweet
 		window.setTimeout(function()
 		{
-			console.log('hello');
 			document.location.reload();
-		}, 500);
+		}, 750);
 	}
 	
 	$('form').submit(function() 

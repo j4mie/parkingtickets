@@ -100,6 +100,10 @@ div.votebuttons
 	
 }
 
+p.status {
+	margin: 20px auto;
+}
+
 form
 {
 	color:#9b683d;
@@ -113,6 +117,7 @@ label
 {
 	float : left;
 	display : inline;
+	cursor: pointer;
 }
 
 
@@ -123,8 +128,7 @@ input.button
 	background-color: white;
 	margin-left : 6px; 
 	border: none;
-	cursor: pointer;
-	
+	cursor: pointer;	
 }
 
 input.love_button 
