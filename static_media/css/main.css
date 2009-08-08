@@ -19,7 +19,7 @@ a:visited {color:#815738} /* visited link */
 a:hover {color:#815738} /* mouse over link */
 a:active {color:black} /* selected link */
 
-h1 {
+h1, h2 {
     font-family: "Impact", "Charcoal6", "sans-serif"; 
     font-size : 350%; 
 	text-align : center;
@@ -32,6 +32,10 @@ h1 {
 h1 em{
 	font-style:normal;
 	color : #c08156;
+}
+
+h2 {
+	font-size: 200%;
 }
 
 strong {
