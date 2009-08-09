@@ -16,7 +16,12 @@ class TweetVote(models.Model):
 	def update_tweet(self, direction):		
 		self.tweet.total_love += self.love * direction
 		self.tweet.vote_count = self.tweet.vote_count + direction
-		self.tweet.normalised_love = self.tweet.total_love / self.tweet.vote_count
+		
+		if self.tweet.vote_count:
+			self.tweet.normalised_love = self.tweet.total_love / self.tweet.vote_count
+		else:
+			self.tweet.normalised_love = 0
+			
 		self.tweet.save()
 		
 	def save(self, *args, **kwargs):
