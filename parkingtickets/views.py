@@ -78,7 +78,6 @@ class TweetSelector:
 		random.shuffle(selection_methods)
 		
 		for method in selection_methods:
-			print method
 			tweet = method()
 			if tweet: return tweet
 		
