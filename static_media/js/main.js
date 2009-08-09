@@ -21,7 +21,8 @@ $(document).ready(function()
 		// Get correct site for images and text
 		var message = 'Love sent!';
 
-		
+		// Unbind existing mouseleave handler, so the hearts stay "on"
+		$('.votebuttons, .votebuttons img').unbind()
 
 		// Get the value of the "action" attribute from the form.
 		// This is the url we need to POST to.
@@ -118,9 +119,13 @@ $(document).ready(function()
 		
 	$('.votebuttons').mouseleave(function() {
 		$('.votebuttons img').attr('src', '/static_media/images/heart-off.gif');
+<<<<<<< HEAD:static_media/js/main.js
 		$('p.lovedesc').html("&nbsp;");
 		
 	});
 	
+=======
+	});	
+>>>>>>> 370a5082b8e948872245879169176f4374ce5641:static_media/js/main.js
 	
 });
