@@ -36,10 +36,30 @@ h1 em{
 
 h2 {
 	font-size: 200%;
+	line-height : 1.2em; 
 }
 
 strong {
 	font-weight: bold;
+}
+
+div.bodytext { 
+
+	width:600px; 
+	font-size : 80%;
+	margin:auto; 
+	text-align: left;
+	line-height : 1.2em;
+
+}
+
+div.bodytext p {
+	padding-bottom : 1em; 
+
+}
+
+div.bodytext img, div.bodytext.object {
+	text-align: center;
 }
 
 div.tweet_and_user {
