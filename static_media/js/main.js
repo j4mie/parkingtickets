@@ -73,11 +73,11 @@ $(document).ready(function()
 	var heartOver = function(img) {
 	
 		var descriptions = [
-		"No love for you!",
+		"Mark as irrelevant",
 		"Not feeling it",
 		"You can have a little",
-		"Loving on medium",
-		"Feeling the love",
+		"A fistful of love",
+		"Love rising",
 		"A whole lotta love",
 		"A love supreme"];
 		
