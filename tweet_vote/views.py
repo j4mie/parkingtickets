@@ -8,13 +8,13 @@ def vote(request, object_id):
 		tweet = get_object_or_404(Tweet, pk=object_id)
 		
 		# Validate love parameter
+		if not 'vote' in request.POST:
+			return HttpResponseBadRequest('A Love Supreme')
+		
 		try:
-			love = float(request.POST.get('vote', False))
+			love = float(request.POST['vote'])
 		except:
 			return HttpResponseBadRequest("You Don't Know What Love Is")
-			
-		if not love:
-			return HttpResponseBadRequest('A Love Supreme')
 		
 		if love < 0 or love > 1:
 			return HttpResponseBadRequest("This Can't Be Love")

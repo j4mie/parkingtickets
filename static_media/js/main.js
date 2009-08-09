@@ -21,7 +21,8 @@ $(document).ready(function()
 		// Get correct site for images and text
 		var message = 'Love sent!';
 
-		
+		// Unbind existing mouseleave handler, so the hearts stay "on"
+		$('.votebuttons').unbind('mouseleave')
 
 		// Get the value of the "action" attribute from the form.
 		// This is the url we need to POST to.
@@ -107,24 +108,6 @@ $(document).ready(function()
 		
 	$('.votebuttons').mouseleave(function() {
 		$('.votebuttons img').attr('src', '/static_media/images/heart-off.gif');
-	});
-	/*
-	for(i = 0; i<heartCount;i++)
-	{
-		$('#heart'+i).hover( function() {
-		
-			heartOver(this);
-		})
-		/*$('#heart'+i).mouseleave( function() {
-		
-			heartOver("");
-		})
-		$('#heart'+i).click( function() {
-		
-			heartClick(this);
-		})
-		
-	}*/
-	
+	});	
 	
 });
