@@ -8,8 +8,7 @@ def delete_each(modeladmin, request, queryset):
 delete_each.short_description = 'Delete each selected tweet vote'
 
 class TweetVoteAdmin(admin.ModelAdmin):
-	list_display = ('__unicode__', 'vote', 'tweet')	
-	list_filter = ('vote',)
+	list_display = ('tweet', 'love')	
 	actions = [delete_each]
 	
 admin.site.register(TweetVote, TweetVoteAdmin)

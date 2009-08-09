@@ -3,7 +3,7 @@ from twitter_search_sync.models import Tweet
 
 class TweetAdmin(admin.ModelAdmin):
 	date_hierarchy = 'pub_time'
-	list_display = ('love_count', 'irrelevant_count', 'ignore_count', 'view_count', 'user', 'pub_time', 'text')	
-	ordering = ['-love_count']
+	list_display = ('normalised_love', 'vote_count', 'total_love', 'irrelevant_count', 'view_count', 'user', 'pub_time', 'text')	
+	ordering = ['-normalised_love']
 	
 admin.site.register(Tweet, TweetAdmin)

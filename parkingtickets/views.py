@@ -1,18 +1,95 @@
 # Create your views here.
 from django.shortcuts import render_to_response
+from django.http import HttpResponse
 from twitter_search_sync.models import Tweet
 from django.db.models import Count
 from django.db import models
-from random import randint
+import time
+import datetime
+import random
+import math
 
-def homepage(request):
-	tweets = Tweet.objects.filter(irrelevant_count__lt=5)
-	tweet_count = tweets.count()
-	random_tweet = tweets[randint(0, tweet_count-1)]
+# This is messy and unpleasant. Fix it.
+class TweetSelector:
+
+	_show_posts_from_last_n_days = 2
+		
+	def _get_random_from_queryset(self, queryset):
+		count = queryset.count()
+		if count == 0:
+			return False
+		else:
+			random_tweet = queryset[random.randint(0, count-1)]
+			return random_tweet
+		
+	def _get_quartic_from_sorted_queryset(self, queryset):
+		count = queryset.count()
+		if count == 0:
+			return False
+		else:
+			index = int(math.pow(random.random(), 4) * count)
+			return queryset[index]
+		
+	def _remove_irrelevant(self, queryset):
+		return queryset.filter(irrelevant_count__lt=1)
+		
+	def _remove_seen_already(self, queryset):
+		if self._seen_already:
+			return queryset.exclude(id__in=self._seen_already)
+		else:
+			return queryset
+		
+	def _filter_queryset(self, queryset):
+		filtered = self._remove_irrelevant(queryset)
+		filtered = self._remove_seen_already(filtered)
+		return filtered
 	
-	# Set a session variable. Allows us to track anon users by session ID
-	request.session['parkingticket'] = True
+	def _get_recent_tweet(self): 
+		end_time = datetime.datetime.now()
+		start_time = end_time - datetime.timedelta(days=2)
+		
+		recent_tweets = Tweet.objects.filter(
+			pub_time__range = (start_time, end_time)
+		).order_by('view_count')
+		
+		filtered = self._filter_queryset(recent_tweets)
+		return self._get_quartic_from_sorted_queryset(filtered)
+		
+	def _get_high_scoring_tweet(self):
+		#sorted = Tweet.objects.filter(normalised_love__gt=0.8)
+		sorted = Tweet.objects.order_by(
+			'normalised_love'
+		)
+		filtered = self._filter_queryset(sorted)
+		#to_return = self._get_random_from_queryset(filtered)
+		return self._get_quartic_from_sorted_queryset(filtered)
+	
+	def get_tweet_to_display(self, seen_already):
+	
+		self._seen_already = seen_already
+		
+		selection_methods = [
+			self._get_recent_tweet,
+			self._get_high_scoring_tweet,
+		]
+		
+		chosen_method_of_selection = random.choice(selection_methods)
+		return chosen_method_of_selection()
+	
+def homepage(request):
+
+	seen_already = request.session.get('seen_tweets', [])
+
+	selector = TweetSelector()
+	tweet_to_display = selector.get_tweet_to_display(seen_already)
+	
+	if not tweet_to_display:
+		return HttpResponse('you have completed the internet')
+	
+	seen_already.append(tweet_to_display.id)
+	request.session['seen_tweets'] = seen_already
 	
 	# Log this view
-	Tweet.objects.filter(id=random_tweet.id).update(view_count = models.F('view_count') + 1)
-	return render_to_response('parkingtickets/homepage.html', {'tweet': random_tweet})
+	Tweet.objects.filter(id=tweet_to_display.id).update(view_count = models.F('view_count') + 1)
+	
+	return render_to_response('parkingtickets/homepage.html', {'tweet': tweet_to_display})

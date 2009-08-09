@@ -26,10 +26,12 @@ class Tweet(models.Model):
     text        = models.TextField()
     user        = models.TextField()
     real_name	= models.TextField()
-    love_count	= models.IntegerField(default = 0) # Denormalised
-    irrelevant_count = models.IntegerField(default = 0) # Denormalised
-    ignore_count = models.IntegerField(default = 0) # Denormalised
-    view_count	= models.IntegerField(default = 0)
+    vote_count	= models.IntegerField(default = 0) # Denormalised
+    total_love = models.FloatField(default = 0) # Denormalised
+    normalised_love = models.FloatField(default = 0, db_index = True)
+    
+    irrelevant_count = models.IntegerField(default = 0, db_index = True)
+    view_count	= models.IntegerField(default = 0, db_index = True)
     
     def __unicode__(self):
         return u'%s %s' % (self.user, self.pub_time)
