@@ -97,6 +97,18 @@ $(document).ready(function()
 		
 	}
 	
+	$('.votebuttons img')
+		.hover(function() {
+			heartOver(this);
+		})
+		.click(function() {
+			heartClick(this);
+		});
+		
+	$('.votebuttons').mouseleave(function() {
+		$('.votebuttons img').attr('src', '/static_media/images/heart-off.gif');
+	});
+	/*
 	for(i = 0; i<heartCount;i++)
 	{
 		$('#heart'+i).hover( function() {
@@ -106,13 +118,13 @@ $(document).ready(function()
 		/*$('#heart'+i).mouseleave( function() {
 		
 			heartOver("");
-		})*/
+		})
 		$('#heart'+i).click( function() {
 		
 			heartClick(this);
 		})
 		
-	}
+	}*/
 	
 	
 });
