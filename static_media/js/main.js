@@ -119,13 +119,10 @@ $(document).ready(function()
 		
 	$('.votebuttons').mouseleave(function() {
 		$('.votebuttons img').attr('src', '/static_media/images/heart-off.gif');
-<<<<<<< HEAD:static_media/js/main.js
+
 		$('p.lovedesc').html("&nbsp;");
 		
 	});
 	
-=======
-	});	
->>>>>>> 370a5082b8e948872245879169176f4374ce5641:static_media/js/main.js
 	
 });
