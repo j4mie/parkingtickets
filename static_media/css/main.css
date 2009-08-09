@@ -29,7 +29,14 @@ h1, h2 {
 	color : #52230b;
 }
 
-h1 em{
+h1 a, h1 a:link, h1 a:visited, h1 a:hover, h1 a:active
+{
+	font-weight:bold;
+	text-decoration:none;
+	color : #52230b;
+}
+
+h1 em {
 	font-style:normal;
 	color : #c08156;
 }
@@ -122,53 +129,6 @@ div.votebuttons
 
 p.status {
 	margin: 20px auto;
-}
-
-form
-{
-	color:#9b683d;
-	display:inline;
-	float:left;
-	padding-left : 20px; 
-	padding-right : 20px;
-}
-
-label
-{
-	float : left;
-	display : inline;
-	cursor: pointer;
-}
-
-
-input.button 
-{
-	background-position: center;
-	background-repeat: no-repeat;
-	background-color: white;
-	margin-left : 6px; 
-	border: none;
-	cursor: pointer;	
-}
-
-input.love_button 
-{
-	height: 37px;
-	width: 43px;
-	
-	background-image: url('../images/heart.png');
-}
-
-input.ignore_button {
-	height: 20px;
-	width: 20px;
-	background-image: url('../images/cross.gif');
-}
-
-input.irrelevant_button {
-	height: 20px;
-	width: 20px;
-	background-image: url('../images/flag.gif');
 }
 
 div.clear {
