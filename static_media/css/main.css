@@ -158,7 +158,9 @@ div.clear {
 	font-size:70%; 
 	
 }
-
+p.lovedesc {
+	font-size:70%;
+}
 .bottomnav a:link {color:#5e2d09} /* unvisited link */
 .bottomnav a:visited {color:#815738} /* visited link */
 .bottomnav a:hover {color:#815738} /* mouse over link */

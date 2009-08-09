@@ -4,11 +4,7 @@
 {% block title %}I Will Pay Your Parking Ticket{% endblock %}
 
 {% block extrascript %}
-<script src="static_media/js/jquery.MetaData.js" type="text/javascript" language="javascript"></script>
-<script src="static_media/js/jquery.rating.js" type="text/javascript" language="javascript"></script>
 <script type="text/javascript" src="static_media/js/main.js"></script>
-<link href='static_media/js/jquery.rating.css' type="text/css" rel="stylesheet"/>
-
 {% endblock %}
 
 {% block body %}
@@ -36,6 +32,7 @@
 </div>
 </div>
 
+<p>How much love do you want to show this tweeter?</p>
 <div class="votebuttons">
 
 <img src="/static_media/images/heart-off.gif" id="heart0" />
@@ -45,6 +42,7 @@
 <img src="/static_media/images/heart-off.gif" id="heart4" />
 <img src="/static_media/images/heart-off.gif" id="heart5" />
 <img src="/static_media/images/heart-off.gif" id="heart6" />
+<p class="lovedesc">&nbsp;</p>
 
 <form method="post" action="/vote/{{ tweet.id }}" id="loveform">
 <input type="hidden" id="vote" value="" />

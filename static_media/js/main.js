@@ -7,7 +7,7 @@ $(document).ready(function()
 	/**
 	 * Function called when a form is submitted
 	 */
-	var heartCount = 7; 	
+	window.heartCount = 7; 	
 	
 	
 	var heartClick = function(img)
@@ -15,7 +15,7 @@ $(document).ready(function()
 	
 		var votecount = $(img).attr("id");
 		votecount = votecount.charAt(votecount.length-1);
-		votecount = votecount/(heartCount-1);
+		if(votecount>0) votecount = votecount/(window.heartCount-1);
 		form = $("#loveform");
 				
 		// Get correct site for images and text
@@ -71,12 +71,21 @@ $(document).ready(function()
 	
 	var heartOver = function(img) {
 	
+		var descriptions = [
+		"No love for you!",
+		"Not feeling it",
+		"You can have a little",
+		"Loving on medium",
+		"Feeling the love",
+		"A whole lotta love",
+		"A love supreme"];
+		
 		var hearton = "/static_media/images/heart.gif";
 		var heartoff = "/static_media/images/heart-off.gif";
 	
 		var on = (img!=""); 
 		
-		for(var i = 0; i<heartCount;i++)
+		for(var i = 0; i<window.heartCount;i++)
 		{
 			
 			if(on)
@@ -91,9 +100,11 @@ $(document).ready(function()
 			
 			if($('#heart'+i).attr('id') == $(img).attr('id')) {
 				on = false;
+				heartnum = i; 
 			}
 		}
-		
+		//alert(descriptions[heartnum]);
+		$('p.lovedesc').text(descriptions[heartnum]);
 		
 	}
 	
@@ -107,24 +118,9 @@ $(document).ready(function()
 		
 	$('.votebuttons').mouseleave(function() {
 		$('.votebuttons img').attr('src', '/static_media/images/heart-off.gif');
+		$('p.lovedesc').html("&nbsp;");
+		
 	});
-	/*
-	for(i = 0; i<heartCount;i++)
-	{
-		$('#heart'+i).hover( function() {
-		
-			heartOver(this);
-		})
-		/*$('#heart'+i).mouseleave( function() {
-		
-			heartOver("");
-		})
-		$('#heart'+i).click( function() {
-		
-			heartClick(this);
-		})
-		
-	}*/
 	
 	
 });

@@ -12,9 +12,10 @@ def vote(request, object_id):
 			love = float(request.POST.get('vote', False))
 		except:
 			return HttpResponseBadRequest("You Don't Know What Love Is")
-			
-		if not love:
-			return HttpResponseBadRequest('A Love Supreme')
+		
+		# commented out - this returned true if you voted 0 	
+		#if not love:
+		#	return HttpResponseBadRequest('A Love Supreme')
 		
 		if love < 0 or love > 1:
 			return HttpResponseBadRequest("This Can't Be Love")
