@@ -22,7 +22,7 @@ $(document).ready(function()
 		var message = 'Love sent!';
 
 		// Unbind existing mouseleave handler, so the hearts stay "on"
-		$('.votebuttons').unbind('mouseleave')
+		$('.votebuttons, .votebuttons img').unbind()
 
 		// Get the value of the "action" attribute from the form.
 		// This is the url we need to POST to.
