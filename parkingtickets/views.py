@@ -33,15 +33,15 @@ class TweetSelector:
 	def _remove_irrelevant(self, queryset):
 		return queryset.filter(irrelevant_count__lt=1)
 		
-	def _remove_seen_already(self, queryset):
-		if self._seen_already:
-			return queryset.exclude(id__in=self._seen_already)
+	def _remove_voted_already(self, queryset):
+		if self._voted_already:
+			return queryset.exclude(id__in=self._voted_already)
 		else:
 			return queryset
 		
 	def _filter_queryset(self, queryset):
 		filtered = self._remove_irrelevant(queryset)
-		filtered = self._remove_seen_already(filtered)
+		filtered = self._remove_voted_already(filtered)
 		return filtered
 	
 	def _get_recent_tweet(self): 
@@ -64,9 +64,9 @@ class TweetSelector:
 		#to_return = self._get_random_from_queryset(filtered)
 		return self._get_quartic_from_sorted_queryset(filtered)
 	
-	def get_tweet_to_display(self, seen_already):
+	def get_tweet_to_display(self, voted_already):
 	
-		self._seen_already = seen_already
+		self._voted_already = voted_already
 		
 		selection_methods = [
 			self._get_recent_tweet,
@@ -77,17 +77,16 @@ class TweetSelector:
 		return chosen_method_of_selection()
 	
 def homepage(request):
-
-	seen_already = request.session.get('seen_tweets', [])
+	voted_already = request.session.get('voted_tweets', [])
 
 	selector = TweetSelector()
-	tweet_to_display = selector.get_tweet_to_display(seen_already)
+	tweet_to_display = selector.get_tweet_to_display(voted_already)
 	
 	if not tweet_to_display:
-		return HttpResponse('you have completed the internet')
+		return render_to_response('parkingtickets/notweets.html')
 	
-	seen_already.append(tweet_to_display.id)
-	request.session['seen_tweets'] = seen_already
+#	voted_already.append(tweet_to_display.id)
+#	request.session['voted_tweets'] = voted_already
 	
 	# Log this view
 	Tweet.objects.filter(id=tweet_to_display.id).update(view_count = models.F('view_count') + 1)
