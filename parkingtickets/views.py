@@ -57,7 +57,9 @@ class TweetSelector:
 		
 	def _get_high_scoring_tweet(self):
 		#sorted = Tweet.objects.filter(normalised_love__gt=0.8)
-		sorted = Tweet.objects.order_by(
+		sorted = Tweet.objects.filter(
+			normalised_love__gt=0.3
+		).order_by(
 			'normalised_love'
 		)
 		filtered = self._filter_queryset(sorted)
@@ -73,8 +75,14 @@ class TweetSelector:
 			self._get_high_scoring_tweet,
 		]
 		
-		chosen_method_of_selection = random.choice(selection_methods)
-		return chosen_method_of_selection()
+		random.shuffle(selection_methods)
+		
+		for method in selection_methods:
+			print method
+			tweet = method()
+			if tweet: return tweet
+		
+		return False
 	
 def homepage(request):
 	voted_already = request.session.get('voted_tweets', [])
