@@ -32,11 +32,13 @@ def vote(request, object_id):
 		
 		if created:
 			response = HttpResponse('success')
-			voted_on = request.session.get('voted_tweets', [])
-			voted_on.append(tweet.id)
-			request.session['voted_tweets'] = voted_on
 		else:
 			response = HttpResponseForbidden('already_voted')
+			
+		voted_on = request.session.get('voted_tweets', [])
+		if not tweet.id in voted_on:
+			voted_on.append(tweet.id)
+		request.session['voted_tweets'] = voted_on
 			
 		return response
 	
