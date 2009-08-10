@@ -76,8 +76,8 @@ $(document).ready(function()
 		"Mark as irrelevant",
 		"Not feeling it",
 		"You can have a little",
+		"A loving spoonful",
 		"A fistful of love",
-		"Love rising",
 		"A whole lotta love",
 		"A love supreme"];
 		
