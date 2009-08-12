@@ -83,6 +83,7 @@ class TweetSelector:
 		
 		return False
 	
+	
 def homepage(request):
 	voted_already = request.session.get('voted_tweets', [])
 
@@ -99,3 +100,4 @@ def homepage(request):
 	Tweet.objects.filter(id=tweet_to_display.id).update(view_count = models.F('view_count') + 1)
 	
 	return render_to_response('parkingtickets/homepage.html', {'tweet': tweet_to_display})
+	
