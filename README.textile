@@ -1,3 +1,5 @@
-# I Will Pay Your Parking Ticket
+h1. I Will Pay Your Parking Ticket
 
-A work in progress.
+A work in progress, by "@sebleedelisle":http://twitter.com/sebleedelisle and "@j4mie":http://twitter.com/j4mie
+
+"iwillpayyourparkingticket.com":http://www.iwillpayyourparkingticket.com
