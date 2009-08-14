@@ -32,6 +32,7 @@ $(document).ready(function()
 		$.ajax(
 		{
 			'type': 'POST',
+			'timeout': 5000,
 			'url': url,
 			'data' : {'vote':votecount}, 
 			'success': function(data)
