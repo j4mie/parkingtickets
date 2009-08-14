@@ -52,7 +52,9 @@ $(document).ready(function()
 				else
 				{
 					// uh-oh, something else has happened
-					$('p.status').text('Sorry, something went wrong. Getting another tweet..');
+					//$('p.status').text('Sorry, something went wrong. Getting another tweet..');
+					// Temp fix
+					$('p.status').html(message + ' <a href="/" title="Get another tweet">Getting another tweet..</a>');
 				}
 			}
 		});
