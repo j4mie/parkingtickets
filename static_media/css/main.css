@@ -129,13 +129,15 @@ div.votebuttons
 
 p.status {
 	margin: 20px auto;
+	line-height :1.5em;
+
 }
 
 div.clear {
 	clear: both;
 }
 .bottomnav {
-	font-size:70%; 
+	font-size:120%; 
 	margin-bottom : 1em; 
 	
 }

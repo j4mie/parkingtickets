@@ -14,18 +14,18 @@
 <div class="tweet">
 
 <p class="image">
-<a href="{{ tweet.user_url }}" title="{{ tweet.user }}'s profile">
+<a href="{{ tweet.user_url }}" target="_blank" title="{{ tweet.user }}'s profile">
 <img src="http://twivatar.org/{{ tweet.user }}/bigger" alt="Twitter avatar for {{ tweet.user }}" width="73" height="73" />
 </a>
 </p>
 
 <p class="text">
-{{ tweet.text|urlize|strongify:"parking ticket"|safe }}
+{{ tweet.text|urlize_target:"_blank"|strongify:"parking ticket"|safe }}
 </p>
 
 
 <div class="user">
-<a href="{{ tweet.url }}">Original tweet</a> sent by <a href="{{ tweet.user_url }}">{{ tweet.real_name }}</a> {{ tweet.pub_time|timesince|truncatewords:2|cut:","|cut:"." }} ago.
+<a href="{{ tweet.url }}" target="_blank">Original tweet</a> sent by <a href="{{ tweet.user_url }}" target="_blank">{{ tweet.real_name }}</a> {{ tweet.pub_time|timesince|truncatewords:2|cut:","|cut:"." }} ago.
 
 </div>
 
@@ -36,14 +36,14 @@
 
 <div class="votebuttons">
 
-<img src="/static_media/images/heart-off.gif" id="heart0" />
-<img src="/static_media/images/heart-off.gif" id="heart1" />
-<img src="/static_media/images/heart-off.gif" id="heart2" />
-<img src="/static_media/images/heart-off.gif" id="heart3" />
-<img src="/static_media/images/heart-off.gif" id="heart4" />
-<img src="/static_media/images/heart-off.gif" id="heart5" />
-<img src="/static_media/images/heart-off.gif" id="heart6" />
-<p class="lovedesc">&nbsp;</p>
+<a href="#"><img src="/static_media/images/heart-off.gif" id="heart0" /></a>
+<a href="#"><img src="/static_media/images/heart-off.gif" id="heart1" /></a>
+<a href="#"><img src="/static_media/images/heart-off.gif" id="heart2" /></a>
+<a href="#"><img src="/static_media/images/heart-off.gif" id="heart3" /></a>
+<a href="#"><img src="/static_media/images/heart-off.gif" id="heart4" /></a>
+<a href="#"><img src="/static_media/images/heart-off.gif" id="heart5" /></a>
+<a href="#"><img src="/static_media/images/heart-off.gif" id="heart6" /></a>
+<p class="lovedesc">Vote by clicking on a heart.</p>
 
 <form method="post" action="/vote/{{ tweet.id }}" id="loveform">
 <input type="hidden" id="vote" value="" />
@@ -53,6 +53,6 @@
 
 </div>
 
-<p class="status">Feel sorry for this tweeter? Send them some love, and maybe I'll pay their parking ticket!</p>
+<p class="status">Feel sorry for this tweeter? Send them some love. <br />Every month, I'll find the one with the most love and pay their ticket!</p>
 
 {% endblock %}

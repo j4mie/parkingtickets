@@ -123,7 +123,7 @@ $(document).ready(function()
 	$('.votebuttons').mouseleave(function() {
 		$('.votebuttons img').attr('src', '/static_media/images/heart-off.gif');
 
-		$('p.lovedesc').html("&nbsp;");
+		$('p.lovedesc').html("Vote by clicking on a heart.");
 		
 	});
 	

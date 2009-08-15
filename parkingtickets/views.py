@@ -57,10 +57,13 @@ class TweetSelector:
 		
 	def _get_high_scoring_tweet(self):
 		#sorted = Tweet.objects.filter(normalised_love__gt=0.8)
+		
+		# think I found and fixed a bug here - tweets were getting sorted into lowest
+		# normalised_love first, where it should have been the highest first? 
 		sorted = Tweet.objects.filter(
-			normalised_love__gt=0.3
+			normalised_love__gt=0.5
 		).order_by(
-			'normalised_love'
+			'-normalised_love', 'total_love'
 		)
 		filtered = self._filter_queryset(sorted)
 		#to_return = self._get_random_from_queryset(filtered)
@@ -83,6 +86,11 @@ class TweetSelector:
 		
 		return False
 	
+	def get_top_tweets(self):
+		
+		return Tweet.objects.order_by('-normalised_love','-total_love')[0:10]
+		
+	
 	
 def homepage(request):
 	voted_already = request.session.get('voted_tweets', [])
@@ -98,6 +106,14 @@ def homepage(request):
 	
 	# Log this view
 	Tweet.objects.filter(id=tweet_to_display.id).update(view_count = models.F('view_count') + 1)
-	
 	return render_to_response('parkingtickets/homepage.html', {'tweet': tweet_to_display})
 	
+	
+	
+	
+def topten(request):
+	selector = TweetSelector()
+	top_ten_tweets = selector.get_top_tweets()
+	count = top_ten_tweets.count(); 
+	return render_to_response('parkingtickets/topten.html', {'tweets': top_ten_tweets, 'num_tweets' : count})
+		
