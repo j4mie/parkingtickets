@@ -21,13 +21,13 @@ class BigIntegerField(models.IntegerField):
         
 
 class Tweet(models.Model):
-    pub_time    = models.DateTimeField()
+    pub_time    = models.DateTimeField(db_index = True)
     twitter_id  = BigIntegerField(unique=True)
     text        = models.TextField()
     user        = models.TextField()
     real_name	= models.TextField()
-    vote_count	= models.IntegerField(default = 0) # Denormalised
-    total_love = models.FloatField(default = 0) # Denormalised
+    vote_count	= models.IntegerField(default = 0, db_index = True) # Denormalised
+    total_love = models.FloatField(default = 0, db_index = True) # Denormalised
     normalised_love = models.FloatField(default = 0, db_index = True)
     
     irrelevant_count = models.IntegerField(default = 0, db_index = True)

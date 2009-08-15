@@ -62,6 +62,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'sql_middleware.SqlPrintingMiddleware', # FOR DEBUGGING ONLY
+    'django.middleware.transaction.TransactionMiddleware',
 )
 
 ROOT_URLCONF = 'parking_proto2.urls'
