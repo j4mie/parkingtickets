@@ -1,0 +1,34 @@
+{% extends "parkingtickets/base.html" %}
+{% load parking_tags %}
+
+{% block title %}I Will Pay Your Parking Ticket{% endblock %}
+
+{% block extrascript %}
+<script type="text/javascript" src="static_media/js/main.js"></script>
+
+{% endblock %}
+
+{% block body %}
+
+
+hello? 
+{{num_tweets}}
+
+{% for tweet in tweets %}  
+<p>
+
+<img src="http://twivatar.org/{{ tweet.user }}/bigger" alt="Twitter avatar for {{ tweet.user }}" width="73" height="73" />
+
+{{tweet.text}}
+{{ tweet.normalised_love}}
+
+{{ tweet.total_love}}
+</p>
+{% endfor %}  
+<div class="clear">&nbsp;</div>
+
+</div>
+
+<p class="status">Feel sorry for this tweeter? Send them some love. <br />Every month, I'll find the one with the most love and pay their ticket!</p>
+
+{% endblock %}
