@@ -1,8 +1,10 @@
 from django.http import HttpResponse, HttpResponseForbidden, HttpResponseBadRequest
+from django.views.decorators.http import require_POST
 from twitter_search_sync.models import Tweet
 from tweet_vote.models import TweetVote
 from django.shortcuts import get_object_or_404
 
+@require_POST
 def vote(request, object_id):
 	if request.method == 'POST':
 		tweet = get_object_or_404(Tweet, pk=object_id)
@@ -41,4 +43,3 @@ def vote(request, object_id):
 		request.session['voted_tweets'] = voted_on
 			
 		return response
-	
